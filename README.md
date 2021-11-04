@@ -10,7 +10,7 @@ jobs:
   lint:
     name: clang-format-fixer
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/clang-format-fix'
+    if: github.ref == 'refs/heads/clang-format-fixer'
     steps:
       - uses: actions/checkout@v2
       - uses: amahanna/clang-format-fixer@v0.1.0
