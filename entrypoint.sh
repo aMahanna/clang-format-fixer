@@ -8,8 +8,6 @@ set -eu
 # git init
 # echo "### Adding git remote..."
 # git remote add origin https://x-access-token:$GITHUB_TOKEN@github.com/$REPO_FULLNAME.git
-# echo "### Getting branch"
-# BRANCH=${GITHUB_REF#*refs/heads/}
 # echo "### git fetch $BRANCH ..."
 # git fetch origin $BRANCH
 # echo "### Branch: $BRANCH (ref: $GITHUB_REF )"
@@ -19,6 +17,8 @@ echo "## Configuring git author..."
 git config --global user.email "clang-format@1337z.ninja"
 git config --global user.name "Clang Format"
 
+echo "### Getting branch"
+BRANCH=${GITHUB_REF#*refs/heads/}
 # Ignore workflow files (we may not touch them)
 git update-index --assume-unchanged .github/workflows/*
 
