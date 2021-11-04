@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clang Format Fixer
-      uses: amhanna/clang-format-fixer@v0.0.0
+      uses: amhanna/clang-format-fixer@v0.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
