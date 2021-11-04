@@ -2,11 +2,12 @@ name: 'clang-format-fixer'
 description: 'Google-style auto-formatter, wip.'
 author: 'aMahanna'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  sources:
+    description: |
+      Location of sources to check. It can be a single file,
+      regex of a directory or multiple selecteor seprated 
+      by comma (`,`)
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.myInput }}
