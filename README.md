@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: aMahanna/clang-format-fixer@v1.0.0
+      - uses: aMahanna/clang-format-fixer@v1.0.1
         with:
           sources: "src/*.cpp,src/*.h"
         env:
