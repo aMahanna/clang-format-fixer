@@ -1,6 +1,9 @@
 name: 'clang-format-fixer'
 description: 'Google-style auto-formatter, wip.'
 author: 'aMahanna'
+branding:
+  icon: 'code'
+  color: 'purple'
 inputs: 
   sources:
     description: |
