@@ -30,8 +30,8 @@ echo "### Getting branch"
 BRANCH=${GITHUB_REF#*refs/heads/}
 
 echo "## Configuring git author..."
-git config --global user.email "anthony.mahanna@gmail.com"
-git config --global user.name "aMahanna"
+git config --global user.email "fixer@clang-format.com"
+git config --global user.name "clang-format-fixer"
 
 echo "## Commiting files..."
 git commit -a -m "apply clang-format" || true
