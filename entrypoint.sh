@@ -5,26 +5,10 @@ function log() {
     echo -e "[ gh-action ] :: $1"
 }
 
-function split_csv() {
-    IFS=','
-    csv_data="$1"
-    local -n global_list_array="$2"
-    for i in $csv_data; do
-        if [ -f "$i" ]; then
-            global_list_array+=("$i")
-        fi
-    done
-    unset IFS
-}
-
 cd "$GITHUB_WORKSPACE" || exit 2
 log "Action started"
 log "Sources to check: $INPUT_SOURCES\n"
-split_csv "$INPUT_SOURCES" SOURCES
-
-for file in "${SOURCES[@]}"; do
-    clang-format -style=file -i "${file}"
-done
+clang-format -style=file -i "$INPUT_SOURCES"
 
 echo "### Getting branch"
 BRANCH=${GITHUB_REF#*refs/heads/}

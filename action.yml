@@ -6,10 +6,7 @@ branding:
   color: 'purple'
 inputs: 
   sources:
-    description: |
-      Location of sources to check. It can be a single file,
-      regex of a directory or multiple selecteor seprated 
-      by comma (`,`)
+    description: Names of the files/directories to check (space-delimited)
     required: true
 runs:
   using: 'docker'
