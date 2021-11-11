@@ -8,7 +8,7 @@ function log() {
 cd "$GITHUB_WORKSPACE" || exit 2
 log "Action started"
 log "Sources to check: $INPUT_SOURCES\n"
-clang-format -style=file -i "$INPUT_SOURCES"
+clang-format -style=file -i $INPUT_SOURCES
 
 echo "### Getting branch"
 BRANCH=${GITHUB_REF#*refs/heads/}
