@@ -1,24 +1,31 @@
 #!/bin/bash
-SOURCES=()
+
+set -e
 
 function log() {
     echo -e "[ gh-action ] :: $1"
 }
 
 cd "$GITHUB_WORKSPACE" || exit 2
-log "Action started"
-log "Sources to check: $INPUT_SOURCES\n"
-clang-format -style=file -i $INPUT_SOURCES
 
-echo "### Getting branch"
-BRANCH=${GITHUB_REF#*refs/heads/}
+if [ -z "$INPUT_SOURCES" ]
+then
+    log "\$INPUT_SOURCES is empty. Skipping Action..."
+else
+    log "Action started"
+    log "Sources to check: $INPUT_SOURCES\n"
+    clang-format -style=file -i $INPUT_SOURCES
 
-echo "## Configuring git author..."
-git config --global user.email "fixer@clang-format.com"
-git config --global user.name "clang-format-fixer"
+    log "### Getting branch"
+    BRANCH=${GITHUB_REF#*refs/heads/}
 
-echo "## Commiting files..."
-git commit -a -m "apply clang-format" || true
+    log "## Configuring git author..."
+    git config --global user.email "fixer@clang-format.com"
+    git config --global user.name "clang-format-fixer"
 
-echo "## Pushing to $BRANCH"
-git push -u origin $BRANCH
+    log "## Commiting files..."
+    git commit -a -m "apply: clang-format" || true
+
+    log "## Pushing to $BRANCH"
+    git push -u origin $BRANCH
+fi
